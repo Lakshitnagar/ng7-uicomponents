@@ -1,0 +1,6 @@
+<br />
+<ng-container *ngFor="let cld of currentLevelData">
+  cld: {{cld}} : {{treeConfig[cld] | json}} <br />
+  <app-create-tree *ngIf="treeConfig" [treeConfig]="treeConfig[cld]"></app-create-tree>
+</ng-container>
+
