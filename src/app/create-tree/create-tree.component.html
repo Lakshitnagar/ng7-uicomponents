@@ -1,6 +1,7 @@
 <br />
 <ng-container *ngFor="let cld of currentLevelData">
-  cld: {{cld}} : {{treeConfig[cld] | json}} <br />
-  <app-create-tree *ngIf="treeConfig" [treeConfig]="treeConfig[cld]"></app-create-tree>
+  <span *ngFor="let cld of indentationSpace">-----</span>
+  {{indentation}}: {{cld}} : {{treeConfig[cld] | json}} <br />
+  <app-create-tree *ngIf="treeConfig" [treeConfig]="treeConfig[cld]" [indentation]="indentation+1"></app-create-tree>
 </ng-container>
 
