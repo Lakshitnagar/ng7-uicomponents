@@ -8,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class TreeComponent implements OnInit {
 
   public treeConfig = {
+    indentation: 0,
+    hideChildren: true,
+  };
+
+  public tree = {
     "_id": "5bf83ac18b4b3361cefacacf",
     "index": 5,
     "guid": {
