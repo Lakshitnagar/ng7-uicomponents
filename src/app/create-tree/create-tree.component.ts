@@ -10,6 +10,7 @@ export class CreateTreeComponent implements OnInit {
   @Input() treeConfig: any;
 
   public currentLevelData: any = [];
+  public hideStatus: any = [];
   public indentationSpace: any = [];
   public childTreeConfig: any;
 
@@ -24,6 +25,10 @@ export class CreateTreeComponent implements OnInit {
 
     if (this.isObjectUtility(this.tree))
       this.currentLevelData = Object.keys(this.tree);
+
+    for (var i = 0; i < this.currentLevelData.length; i++) {
+      this.hideStatus.push(true);
+    }
   }
 
   isObjectUtility(obj) {
