@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CurrentLevelData } from '../interfaces/current-level-data';
 
 @Component({
   selector: 'app-create-tree',
@@ -9,7 +10,7 @@ export class CreateTreeComponent implements OnInit {
   @Input() tree: any;
   @Input() treeConfig: any;
 
-  public currentLevelData: any = [];
+  public currentLevelData: CurrentLevelData[] = [];
   public hideStatus: any = [];
   public indentationSpace: any = [];
   public childTreeConfig: any;
@@ -24,11 +25,16 @@ export class CreateTreeComponent implements OnInit {
     };
 
     if (this.isObjectUtility(this.tree))
-      this.currentLevelData = Object.keys(this.tree);
+    Object.keys(this.tree).forEach((data) => {
+      let currentItemData = {
+        data: data,
+        isHidden: true,
+        isDisabled: false
+      };
 
-    for (var i = 0; i < this.currentLevelData.length; i++) {
-      this.hideStatus.push(true);
-    }
+      this.currentLevelData.push(currentItemData);
+    });
+
   }
 
   isObjectUtility(obj) {

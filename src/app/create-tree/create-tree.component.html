@@ -1,12 +1,11 @@
 <br />
 <ng-container *ngFor="let cld of currentLevelData; let i = index">
   <span *ngFor="let cld of indentationSpace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-  <span *ngIf="!isObjectUtility(tree[cld])">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-  <button *ngIf="isObjectUtility(tree[cld])" (click)="hideStatus[i]=!hideStatus[i]">
-    <span *ngIf="hideStatus[i]">+</span>
-    <span *ngIf="!hideStatus[i]">-</span>
+  <span *ngIf="!isObjectUtility(tree[cld.data])">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  <button *ngIf="isObjectUtility(tree[cld.data])" (click)="currentLevelData[i].isHidden=!currentLevelData[i].isHidden">
+    <span *ngIf="currentLevelData[i].isHidden">+</span>
+    <span *ngIf="!currentLevelData[i].isHidden">-</span>
   </button>
-  {{cld}} : <span *ngIf="!isObjectUtility(tree[cld])">{{tree[cld] | json}}</span> <br />
-  <app-create-tree *ngIf="tree" [hidden]="hideStatus[i]" [tree]="tree[cld]" [treeConfig]="childTreeConfig"></app-create-tree>
+  {{cld.data}} : <span *ngIf="!isObjectUtility(tree[cld.data])">{{tree[cld.data] | json}}</span> <br />
+  <app-create-tree *ngIf="tree" [hidden]="currentLevelData[i].isHidden" [tree]="tree[cld.data]" [treeConfig]="childTreeConfig"></app-create-tree>
 </ng-container>
-
