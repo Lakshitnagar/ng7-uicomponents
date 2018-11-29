@@ -1,0 +1,23 @@
+<p>
+  cdk-tree works!
+</p>
+<hr />
+
+<cdk-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <cdk-tree-node *cdkTreeNodeDef="let node" cdkTreeNodePadding class="example-tree-node">
+    <!--<button mat-icon-button disabled></button>-->
+    <span class="glyph-file bottom-padding"></span>
+    {{node.filename}}  {{node.type}}
+  </cdk-tree-node>
+  <cdk-tree-node *cdkTreeNodeDef="let node; when: hasChild" cdkTreeNodePadding class="example-tree-node bottom-padding">
+    <span [attr.aria-label]="'toggle ' + node.filename" cdkTreeNodeToggle>
+      <span [ngClass]="{'glyph-stack-plus': !treeControl.isExpanded(node), 'glyph-stack-minus': treeControl.isExpanded(node)}"></span>
+      <!--<mat-icon class="mat-icon-rtl-mirror">
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>-->
+    </span>
+    {{node.filename}}  {{node.type}}
+  </cdk-tree-node>
+</cdk-tree>
+
+
